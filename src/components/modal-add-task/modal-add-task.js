@@ -5,7 +5,7 @@ import './modal-add-task.css';
 export default class ModalAddTask extends Component {
 
     state = {
-        divStyle: {
+        isShow: {
             display: 'none',
         },
     };
@@ -15,7 +15,7 @@ export default class ModalAddTask extends Component {
 closeModalTask = () => {
     this.setState(() => {
         return {
-            divStyle: {
+            isShow: {
                 display: 'none',
             },
           };
@@ -27,7 +27,7 @@ openModalTask = () => {
     this.setState(() => {
        
           return {
-            divStyle: {
+            isShow: {
                 display: 'flex',
             },
           };
@@ -45,7 +45,7 @@ openModalTask = () => {
                         onClick={() => this.openModalTask()}>Добавить
                 </button>
 
-                <div className="modal__add--task" style={this.state.divStyle}>
+                <div className="modal__add--task" style={this.state.isShow}>
                     <ModalAddTaskForm onAddTask={ () => onAddTask()}
                                         onCloseTask={() => this.closeModalTask()}/>
                 </div>

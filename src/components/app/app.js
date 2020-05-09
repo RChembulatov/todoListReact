@@ -46,46 +46,41 @@ maxId = 4; //Id новых задач
         description: `Сварить кофе налить в кружку открыть рот пить кофе`
       }
     ],
-    divStyle: {
+    isShow: {
       display: 'none',
     },
   }
 
-  //Открыть модальное окно Aside 
-  openAside = () => {
-    this.setState(() => {
-          return {
-            divStyle: {
-                display: 'flex',
-            },
-          };
-        });  
-  };
   //Закрыть модальное окно Aside
   closeAside = () => {
     this.setState(() => {
           return {
-            divStyle: {
+            isShow: {
                 display: 'none',
             },
           };
         });  
   };
 
-  //Функция для нахождения id по клику из списка задач
-  changeTaskForAside = (id) => {
+  //Открыть модальное окно Aside
+  openAside = (id) => {
     this.setState(( {tasks} ) => {
-      const indx = tasks.findIndex((el) => el.id === id); //id, по которому произошел клик
+      const indx = tasks.findIndex((el) => el.id === id); //Найти id, по которому произошел клик
       
-      const  itemName = tasks[indx].name;
+      const itemName = tasks[indx].name;
       const itemDate = tasks[indx].date;
       const itemDescription = tasks[indx].description;
 
-      console.log('aside: ', indx, itemName, itemDate, itemDescription);
-    
+      return {name: itemName,
+              date: itemDate,
+              description: itemDescription,
+              isShow: {
+                display: 'flex',
+              },
+            };    
     });
-
   };
+
 
   //Функция добавления задачи
   addItem = (text) => {
@@ -120,14 +115,15 @@ maxId = 4; //Id новых задач
 
       return (
         {tasks: newArray}
-      )
+      );
     });
   };
 
     render() {
 
-        return (
-            
+      const {tasks, name, date, description} = this.state;
+
+        return (            
             <div className="todos">
                 <div className="wrapper">
                     <div className="todo">
@@ -136,14 +132,13 @@ maxId = 4; //Id новых задач
                         </div>
 
                         <AppHeader/>
-                        <TodoList todos = {this.state.tasks}
+                        <TodoList todos = {tasks}
                                   onDeleted={ this.deleteItem }
-                                  onForAside = {this.changeTaskForAside}
                                   onOpenAside = {this.openAside}/>
                         <ModalAddTask onAddTask = {this.addItem}/>
-                        <Aside todos = {this.state.tasks}
-                                styleDisplay = {this.state.divStyle}
-                                name={'Name'} date={"Date"} description={'Description'}
+                        <Aside todos = {tasks}
+                                styleDisplay = {this.state.isShow}
+                                name={name} date={date} description={description}
                                 onCloseAside={this.closeAside}/>
                     </div>
                 </div>

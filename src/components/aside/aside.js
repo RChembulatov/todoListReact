@@ -7,7 +7,7 @@ export default class Aside extends Component  {
    
   render() {
 
-  const {/* todos, */styleDisplay, onCloseAside, date, description, name, onForAside } = this.props;
+  const { styleDisplay, onCloseAside, date, description, name } = this.props;
     
       return (
         <div className="todo__aside" style={styleDisplay}>
@@ -15,8 +15,7 @@ export default class Aside extends Component  {
                 onClick={() => onCloseAside()}>&times;
           </div>
           <header>
-            <h2 className="todo__aside__name"
-                onClick = {onForAside}>
+            <h2 className="todo__aside__name">
                 {name}
             </h2>
             <p>

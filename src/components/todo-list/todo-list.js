@@ -4,17 +4,16 @@ import TodoListItems from '../todo-list-items/todo-list-items';
 
 import './todo-list.css';
 
-const TodoList = ({ todos, onDeleted, onForAside, onOpenAside }) => {
-    
+const TodoList = ({ todos, onDeleted, onOpenAside }) => {
+
     //Создаем массив задач
     const elements = todos.map((item) => {
 
         return (
             <span key = {item.id}>
                 <TodoListItems {...item}
-                    onDeleted={() => onDeleted(item.id)}
-                    onForAside = {() => onForAside(item.id, item.name, item.date, item.description)}
-                    onOpenAside={({...item}) => onOpenAside({...item})}/>                  
+                    onDeleted={() => onDeleted(item.id)}                    
+                    onOpenAside = {() => onOpenAside(item.id, item.name, item.date, item.description)}/>                  
             </span>
         );           
     });

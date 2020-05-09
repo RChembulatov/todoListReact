@@ -4,7 +4,9 @@ import './todo-list-items.css';
 
 export default class TodoListItems extends Component {
   state = {
-    done: false,  
+    done: false,
+    
+
   };
   
   //Перевод задачи в завершенную
@@ -19,7 +21,7 @@ export default class TodoListItems extends Component {
 
   render(){
     
-  const {id, name, date, deleted, onDeleted, onForAside, onOpenAside } = this.props;
+  const {id, name, date, deleted, onDeleted, onOpenAside } = this.props;
 
   const { done } = this.state;
 
@@ -32,14 +34,14 @@ export default class TodoListItems extends Component {
     return (
         <div className={classNames}>
               <span className="todo__item--id"
-                    onClick = {onForAside}>{id}</span>
+                    onClick={onOpenAside}>{id}</span>
               <span className="todo__item--name"
                     onClick={onOpenAside}>{name}
               </span>
               <span className="todo__item--date"
-                    onClick = {onForAside}>{date}</span>
+                   onClick = {onOpenAside} >{date}</span>
               <input className="todo__item--check" type="checkbox" 
-                    onClick={this.onCheckboxClick} />
+                    onClick={this.onCheckboxClick}  />
               <span className="todo__item--delete">{deleted}
                 <button className="del"
                     onClick={onDeleted}>УДАЛИТЬ</button>
