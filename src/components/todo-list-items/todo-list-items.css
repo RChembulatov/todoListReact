@@ -1,0 +1,32 @@
+.todo__item span,
+.todo__item input,
+.del {
+  width: 100%;
+  text-align: center;
+  padding: 0;
+}
+
+.todo__item {
+    display: flex;
+    justify-content: space-between;
+    padding: 32px 0;
+    transition: 0.3s ease-in-out;
+    width: 100%;
+    border: 1px solid rgb(85, 129, 250);
+}
+
+.todo__item:hover {
+    background-color: rgb(85, 129, 250);
+}
+
+.doneClass {
+    background-color: rgba(158, 249, 255, 0.479);
+}
+
+.del {
+    background-color: #ffc738;
+    border-radius: 5px;
+    border: 1px solid #ffc738;
+    padding: 3px;
+    cursor: pointer;
+}

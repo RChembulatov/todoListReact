@@ -1,0 +1,41 @@
+.todo__aside {
+    display: block;
+    margin-left: auto;
+    width: 768px;
+    padding: 40px 32px 32px;
+    background-color: #3577f1;
+    height: 100vh;
+    color: #f1f1f1;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    transition: 0.3s ease-in;
+  }
+  
+  .todo__aside--close {
+    display: inline-block;
+    cursor: pointer;
+  }
+ 
+  .todo__aside header {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-around;
+    height: 150px;
+    background-color: #3577f1;
+    color: #f1f1f1;
+    padding: 16px;
+    border-bottom: 1px solid #f1f1f16b;
+  }
+  
+  .todo__aside header h2 {
+    font-weight: normal;
+  }
+  
+  .todo__aside__date {
+    margin-left: auto;
+    color: #ffffff;
+  }
+  
+  .todo__aside__content {
+    padding: 32px 0;
+  }

@@ -1,0 +1,13 @@
+.todo__header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 16px 0;
+}
+
+.todo__header span {
+    width: 20%;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
