@@ -83,21 +83,24 @@ maxId = 4; //Id новых задач
 
 
   //Функция добавления задачи
-  addItem = (text) => {
+  addItem = (name, date, description) => {
     const newTask = {
       id: this.maxId++,
-      name: 'text',
-      date: '01.01.2000',
-      description: 'text',
-      done: false
-    }; // Создаем объект задачи
+      name: name,
+      date: date,
+      done: false,
+      deleted: false,
+      description: description,
+    }; 
     
+    // Создаем объект задачи
     this.setState(( { tasks } ) => {
       const newArr = [
         ...tasks,
         newTask,
-      ]; // Создаем новый массив с задачами
-
+      ]; 
+      
+      // Создаем новый массив с задачами
       return {
         tasks: newArr
       };
