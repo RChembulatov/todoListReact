@@ -5,13 +5,11 @@ import './modal-add-task.css';
 export default class ModalAddTask extends Component {
 
     state = {
-        newTask: {
-            name: '',
-            date: '',
-            done: false,
-            deleted: false,
-            description: '',
-          },
+        name: '',
+        date: '',
+        done: false,
+        deleted: false,
+        description: '',
         isShow: {
             display: 'none',
         },
@@ -63,10 +61,16 @@ export default class ModalAddTask extends Component {
     onSubmit = (e) => {
         e.preventDefault();
         this.props.onAddTask(this.state.name, this.state.date, this.state.description);
+        this.setState({
+            name: '',
+            date: '',
+            done: false,
+            deleted: false,
+            description: '',
+        });
     };
   
     render() {
-
         return(
             <div className="modal__add">
                 <button className="btn"
@@ -81,16 +85,18 @@ export default class ModalAddTask extends Component {
                                 onClick={() => this.closeModalTask()}>&times;</div>
                             <input
                                 type="text"
-                                name="taskName"
                                 placeholder="Введите название задачи"
-                                onChange={this.onLabelChangeName}/>
+                                onChange={this.onLabelChangeName}
+                                value={this.state.name}/>
                             <input type="date" name="taskDate" placeholder=""
-                            onChange={this.onLabelChangeDate}/>
+                                onChange={this.onLabelChangeDate}
+                                value={this.state.date}/>
                             <input
                                 type="text"
                                 name="taskDescription"
                                 placeholder="Введите описание задачи"
-                                onChange={this.onLabelChangeDescription}/>
+                                onChange={this.onLabelChangeDescription}
+                                value={this.state.description}/>
                             <button className="btn">Добавить</button>
                         </form>
                     </div>        
