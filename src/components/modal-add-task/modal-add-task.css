@@ -59,19 +59,25 @@
     padding: 0px 0 32px 0;
     margin-left: auto;
   }
-  
-  .modal__window input {
+   
+  .input {
     font-size: 18px;
     margin-bottom: 24px;
     padding: 24px 16px;
     border: 1px solid #eee;
     border-radius: 2px;
   }
-  
-  .modal__window .empty {
+
+  .input--empty {
+    font-size: 18px;
+    margin-bottom: 24px;
+    padding: 24px 16px;
+    border: 1px solid #eee;
+    border-radius: 2px;
     border: 1px solid red;
+
   }
   
-  .empty::placeholder {
-    color: red;
+  .input--empty::placeholder {
+    color: red;  
   }

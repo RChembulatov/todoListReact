@@ -13,6 +13,8 @@ export default class ModalAddTask extends Component {
         isShow: {
             display: 'none',
         },
+        classNameState: 'input',
+        
     };
 
     //Закрыть модальное окно добавления задач
@@ -22,6 +24,12 @@ export default class ModalAddTask extends Component {
                 isShow: {
                     display: 'none',
                 },
+                name: '',
+                date: '',
+                done: false,
+                deleted: false,
+                description: '',
+                classNameState: 'input',
             };
         });
     };
@@ -60,17 +68,32 @@ export default class ModalAddTask extends Component {
     //Отправляем данные
     onSubmit = (e) => {
         e.preventDefault();
-        this.props.onAddTask(this.state.name, this.state.date, this.state.description);
-        this.setState({
-            name: '',
-            date: '',
-            done: false,
-            deleted: false,
-            description: '',
-        });
+        //Проверка на заполненность форм, обнуление форм после отправки данных
+        if (this.state.name !== "" && this.state.date !== "" && this.state.description !== "") {
+            this.props.onAddTask(this.state.name, this.state.date, this.state.description);
+            this.setState({
+                name: '',
+                date: '',
+                done: false,
+                deleted: false,
+                description: '',
+                classNameState: 'input',
+                isShow: {
+                    display: 'none',
+                },
+            });
+        }
+        //Проверка на заполненность форм
+        if (this.state.name === "" || this.state.date === "" || this.state.description === "") {
+            this.setState({
+                classNameState: 'input--empty',
+            });
+        };
     };
   
     render() {
+
+    const { classNameState } = this.state;
         return(
             <div className="modal__add">
                 <button className="btn"
@@ -85,15 +108,19 @@ export default class ModalAddTask extends Component {
                                 onClick={() => this.closeModalTask()}>&times;</div>
                             <input
                                 type="text"
+                                className={classNameState}
                                 placeholder="Введите название задачи"
                                 onChange={this.onLabelChangeName}
                                 value={this.state.name}/>
-                            <input type="date" name="taskDate" placeholder=""
+                            <input 
+                                type="date" 
+                                className={classNameState}
+                                placeholder=""
                                 onChange={this.onLabelChangeDate}
                                 value={this.state.date}/>
                             <input
                                 type="text"
-                                name="taskDescription"
+                                className={classNameState}
                                 placeholder="Введите описание задачи"
                                 onChange={this.onLabelChangeDescription}
                                 value={this.state.description}/>
