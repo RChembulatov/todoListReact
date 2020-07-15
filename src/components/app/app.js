@@ -12,39 +12,38 @@ export default class App extends Component {
 maxId = 4; //Id новых задач
 
   state = {
-    tasks: [
-      {
-        id: 0,
-        name: "Купить фрукты",
-        date: "2020-03-10",
-        done: false,
-        deleted: false,
-        description: `Пойти на рынок и взять яблок и ананас`
-      },
-      {
-        id: 1,
-        name: "Покормить кота",
-        date: "2020-03-10",
-        done: false,
-        deleted: false,
-        description: `Насыпать в миску корма`
-      },
-      {
-        id: 2,
-        name: "Поспать",
-        date: "2020-03-10",
-        done: false,
-        deleted: false,
-        description: `Лечь на кровать закрыть глаза спать2`
-      },
-      {
-        id: 3,
-        name: "Выпить кофе",
-        date: "2020-03-10",
-        done: false,
-        deleted: false,
-        description: `Сварить кофе налить в кружку открыть рот пить кофе`
-      }
+    tasks: [{
+      id: 0,
+      name: "Задача номер один",
+      date: "1 января 2020",
+      done: false,
+      deleted: false,
+      description: `Первое описание`
+    },
+    {
+      id: 1,
+      name: "Задача номер два",
+      date: "2 февраля 2020",
+      done: true,
+      deleted: false,
+      description: `Второе описание`
+    },
+    {
+      id: 2,
+      name: "Задача номер три",
+      date: "3 марта 2020",
+      done: true,
+      deleted: false,
+      description: `Третье описание`
+    },
+    {
+      id: 3,
+      name: "Задача номер четыре",
+      date: "4 марта 2020",
+      done: true,
+      deleted: false,
+      description: `Четвертое описание`
+    }
     ],
     isShow: {
       display: 'none',
@@ -75,7 +74,7 @@ maxId = 4; //Id новых задач
               date: itemDate,
               description: itemDescription,
               isShow: {
-                display: 'flex',
+                display: 'block',
               },
             };    
     });
@@ -84,10 +83,16 @@ maxId = 4; //Id новых задач
 
   //Функция добавления задачи
   addItem = (name, date, description) => {
+    
+    const NewDate = new Date(date).toLocaleString("ru", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
     const newTask = {
       id: this.maxId++,
       name: name,
-      date: date,
+      date: NewDate,
       done: false,
       deleted: false,
       description: description,
@@ -139,12 +144,14 @@ maxId = 4; //Id новых задач
                                   onDeleted={ this.deleteItem }
                                   onOpenAside = {this.openAside}/>
                         <ModalAddTask onAddTask = {this.addItem}/>
-                        <Aside todos = {tasks}
+                        
+                    </div>
+                    
+                </div>
+                <Aside todos = {tasks}
                                 styleDisplay = {this.state.isShow}
                                 name={name} date={date} description={description}
                                 onCloseAside={this.closeAside}/>
-                    </div>
-                </div>
             </div>
         );
     };
